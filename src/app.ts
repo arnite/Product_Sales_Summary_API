@@ -1,11 +1,11 @@
 import express, { Request, Response } from 'express';
 import { Dialect, Sequelize } from 'sequelize';
-import config from './config/config';
+import config from './config/config.js';
 
 // Create Express app
 const app = express();
 
-// Connecting DB
+// DB connection
 const { database, username, password, host, dialect } = config.development;
 const sequelize = new Sequelize(
   database as string,
