@@ -10,6 +10,11 @@ sequelize
   .then(() => console.log('Connected to PostgreSQL!'))
   .catch((err) => console.error('Unable to connect:', err));
 
+sequelize
+  .sync()
+  .then(() => console.log('DB synced'))
+  .catch((err) => console.log('DB '));
+
 // Root route
 app.get('/', (req: Request, res: Response) => {
   res.json({ message: 'Welcome to the Express + TypeScript Server!' });

@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "seed": "npx tsx --env-file=.env src/seeders/seed.ts",
     "dev": "npx tsx --env-file=.env --watch  src/server.ts",
     "start": "node dist/server.js",
     "build": "tsc"
@@ -24,6 +25,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@faker-js/faker": "^10.1.0",
     "express": "^5.1.0",
     "pg": "^8.16.3",
     "pg-hstore": "^2.3.4",

@@ -13,12 +13,12 @@ interface SaleCreationAttributes
 
 export class Sale
   extends Model<SaleAttributes, SaleCreationAttributes>
-  implements SaleAttributes
+  implements SaleCreationAttributes
 {
-  public id!: number;
-  public productId!: number;
-  public quantity!: number;
-  public createdAt!: Date;
+  declare id: number;
+  declare productId: number;
+  declare quantity: number;
+  declare createdAt?: Date;
 }
 
 Sale.init(
@@ -35,7 +35,6 @@ Sale.init(
         model: 'products',
         key: 'id',
       },
-      field: 'product_id',
     },
     quantity: {
       type: DataTypes.INTEGER,
@@ -45,7 +44,6 @@ Sale.init(
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
-      field: 'created_at',
     },
   },
   {
