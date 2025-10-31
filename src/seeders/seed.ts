@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
-import { sequelize } from './config/database';
-import './models';
-import { Product, Sale } from './models';
+import { sequelize } from '../config/database';
+import '../models';
+import { Product, Sale } from '../models';
 
 async function seedDatabase() {
   try {
