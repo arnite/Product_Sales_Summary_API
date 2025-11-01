@@ -6,7 +6,7 @@ import { fn, col } from 'sequelize';
 export const getSalesSummary = async (req: Request, res: Response) => {
   try {
     const rows = await Sale.findAll({
-      attributes: ['productId', [fn('SUM', col('quantity')), 'totalSold']],
+      attributes: ['productId', [fn('SUM', col('quantity')), 'total_sold']],
       include: [
         {
           model: Product,
@@ -14,7 +14,7 @@ export const getSalesSummary = async (req: Request, res: Response) => {
         },
       ],
       group: ['Sale.productId', 'Product.id', 'Product.name', 'Product.price'],
-      order: [[sequelize.literal('totalSold'), 'DESC']],
+      order: [[sequelize.literal('"total_sold"'), 'DESC']],
     });
 
     // format response to a clean JSON structure
