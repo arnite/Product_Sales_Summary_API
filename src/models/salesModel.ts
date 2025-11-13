@@ -47,7 +47,6 @@ Sale.init(
     },
   },
   {
-    tableName: 'sales',
     sequelize,
     timestamps: false,
   }

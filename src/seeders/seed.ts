@@ -16,7 +16,7 @@ async function seedDatabase() {
     for (let i = 0; i < 10; i++) {
       const product = await Product.create({
         name: faker.commerce.productName(),
-        price: faker.commerce.price({ min: 10, max: 2000 }),
+        price: Number(faker.commerce.price({ min: 10, max: 2000 })),
       });
       products.push(product);
     }

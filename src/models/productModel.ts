@@ -4,7 +4,7 @@ import { sequelize } from '../config/database';
 interface ProductAttributes {
   id: number;
   name: string;
-  price: string;
+  price: number;
 }
 
 interface ProductCreationAttributes extends Optional<ProductAttributes, 'id'> {}
@@ -15,7 +15,7 @@ export class Product
 {
   declare id: number;
   declare name: string;
-  declare price: string;
+  declare price: number;
 }
 
 Product.init(
@@ -30,12 +30,11 @@ Product.init(
       allowNull: false,
     },
     price: {
-      type: DataTypes.STRING(150),
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
   },
   {
-    tableName: 'products',
     sequelize,
     timestamps: false,
   }

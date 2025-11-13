@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { sequelize } from './config/database';
+import { connectDB } from './config/database';
 import './models';
 import salesSummaryRoute from './routes/saleSummaryRoute';
 
@@ -9,15 +9,7 @@ const app = express();
 app.use(express.json());
 
 // Connecting DB
-sequelize
-  .authenticate()
-  .then(() => console.log('Connected to PostgreSQL!'))
-  .catch((err) => console.error('Unable to connect:', err));
-
-sequelize
-  .sync()
-  .then(() => console.log('DB synced'))
-  .catch((err) => console.log('DB '));
+connectDB();
 
 // Root route
 app.get('/', (req: Request, res: Response) => {
