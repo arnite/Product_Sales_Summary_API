@@ -22,7 +22,6 @@ async function seedDatabase() {
     }
 
     console.log('✅ Products created!');
-    console.log(products.map((p) => p.id));
 
     // 2️⃣ Create Random Sales for Products
     for (const product of products) {

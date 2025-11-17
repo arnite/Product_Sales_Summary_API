@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { Sale, Product } from '../models';
-import { sequelize } from '../config/database';
 import { fn, col } from 'sequelize';
 
 export const getSalesSummary = async (req: Request, res: Response) => {
@@ -23,7 +22,18 @@ export const getSalesSummary = async (req: Request, res: Response) => {
       order: [[col('Product.price'), 'DESC']],
     });
 
-    //console.log(rows);
+    //     SELECT
+    //    s.product_id,
+    //    p.name,
+    //    p.price,
+    //    SUM(s.quantity) AS total_quantity
+    // FROM sales s
+    // INNER JOIN products p
+    // ON s.product_id = p.id
+    // GROUP BY s.product_id, p.name, p.price
+    // ORDER BY p.price;
+
+    // console.log(rows);
     res.status(200).json(rows);
   } catch (err) {
     console.error(err);
